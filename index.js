@@ -71,6 +71,21 @@ async function run() {
             res.send(result);
         })
 
+        //Delete my reviews
+        app.delete('/reviews/:id', async (req, res) => {
+            const id = req.params.id;
+            console.log("From id:", id);
+            const query = { _id: ObjectId(id) };
+            console.log("from query:", query);
+            const result = await reviewCollection.deleteOne(query);
+            res.send(result);
+        })
+
+        app.post('/service', async (req, res) => {
+            const servic = req.body;
+            const result = await serviceCollection.insertOne(servic);
+            res.send(result);
+        });
 
     }
     finally {
