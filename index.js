@@ -19,7 +19,7 @@ async function run() {
         const serviceCollection = client.db('awesomeClicks').collection('services');
         const reviewCollection = client.db('awesomeClicks').collection('reviews');
 
-
+        //Topics for home
         app.get('/topics', async (req, res) => {
             const query = {}
             const cursor = serviceCollection.find(query);
@@ -51,6 +51,7 @@ async function run() {
             const review = await cursor.toArray();
             res.send(review);
         });
+        // ServiceReview
         app.get('/serviceReview', async (req, res) => {
             let query = {};
             console.log(req.query.id);
